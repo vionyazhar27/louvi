@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>louvi tests</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; padding: 24px; max-width: 760px; margin: auto; }
+    pre { white-space: pre-wrap; }
+    .pass { color: #2E7656; } .fail { color: #B3261E; }
+  </style>
+</head>
+<body>
+  <h1>louvi logic tests</h1>
+  <pre id="out">Running…</pre>
+  <script type="module">
+    import { run } from './tests.js';
+    const out = document.getElementById('out');
+    const lines = [];
+    const res = await run((l) => lines.push(l));
+    out.textContent = lines.join('\n');
+    out.className = res.failures.length ? 'fail' : 'pass';
+  </script>
+</body>
+</html>
